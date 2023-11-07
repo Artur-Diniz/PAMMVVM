@@ -24,7 +24,9 @@
         <Label Text="{Binding ToDo.Completed}"
                     VerticalOptions="Center" 
                     HorizontalOptions="Center"/>
-        <CheckBox  x:Name="CompletedBox"
+        
+        
+        <CheckBox  x:Name="completed"  
                    VerticalOptions="Center" 
                     HorizontalOptions="Center"/>
     
