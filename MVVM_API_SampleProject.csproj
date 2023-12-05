@@ -49,6 +49,21 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="NewFolder\**" />
+	  <AndroidResource Remove="Platforms\NewFolder\**" />
+	  <Compile Remove="NewFolder\**" />
+	  <Compile Remove="Platforms\NewFolder\**" />
+	  <EmbeddedResource Remove="NewFolder\**" />
+	  <EmbeddedResource Remove="Platforms\NewFolder\**" />
+	  <MauiCss Remove="NewFolder\**" />
+	  <MauiCss Remove="Platforms\NewFolder\**" />
+	  <MauiXaml Remove="NewFolder\**" />
+	  <MauiXaml Remove="Platforms\NewFolder\**" />
+	  <None Remove="NewFolder\**" />
+	  <None Remove="Platforms\NewFolder\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 	</ItemGroup>
