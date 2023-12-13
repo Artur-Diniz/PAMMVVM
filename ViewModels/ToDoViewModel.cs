@@ -7,7 +7,7 @@ using System.Diagnostics;
 
 namespace MVVM_API_SampleProject.ViewModels
 {
-    internal partial class PostViewModel : ObservableObject, IDisposable
+    internal partial class ToDoViewModel : ObservableObject, IDisposable
     {
         HttpClient client;
 
@@ -25,31 +25,31 @@ namespace MVVM_API_SampleProject.ViewModels
         public string _Title;
 
         [ObservableProperty]
-        public string _Body;
+        public string _Completed;
 
         [ObservableProperty]
-        public ObservableCollection<Post> _posts;
+        public ObservableCollection<ToDo> _toDos;
 
 
-        public PostViewModel()
+        public ToDoViewModel()
         {
             client = new HttpClient();
-            Posts = new ObservableCollection<Post>();
+            ToDos = new ObservableCollection<ToDo>();
             _serializerOptions = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
         }
 
-        public ICommand GetPostsCommand => new Command(async () => await LoadPostAsync());
+        public ICommand GetToDoCommand => new Command(async () => await LoadToDoAsync());
 
-        private async Task LoadPostAsync()
+        private async Task LoadToDoAsync()
         {
-            var url = $"{baseUrl}/posts";
+            var url = $"{baseUrl}/todos";
             try
             {
                 var response = await client.GetAsync(url);
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    Posts = JsonSerializer.Deserialize<ObservableCollection<Post>>(content, _serializerOptions);
+                    ToDos = JsonSerializer.Deserialize<ObservableCollection<ToDo>>(content, _serializerOptions);
                 }
             }
             catch (Exception e)
